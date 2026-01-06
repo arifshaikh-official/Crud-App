@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Users</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-900 text-white font-sans">
+  <div class="max-w-7xl mx-auto p-6">
+    <header class="mb-8">
+      <a href="/" class="text-blue-400 hover:text-blue-300 text-sm font-medium underline">← Back to Home</a>
+      <h1 class="text-4xl font-bold mt-4">All Users</h1>
+    </header>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <% users.forEach(function(user){ %>
+        <article class="bg-zinc-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="bg-zinc-600 h-48 w-full overflow-hidden">
+            <img class="w-full h-full object-cover" src="<%= user.image %>" alt="<%= user.name %>'s profile picture">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold"><%= user.name %></h3>
+            <p class="text-sm text-zinc-400"><%= user.email %></p>
+            <div class="mt-4 flex justify-between text-sm font-medium">
+              <a href="" class="text-blue-400 hover:underline">Edit</a>
+              <a href="/delete/<%= user._id%>" class="text-red-500 hover:underline">Delete</a>
+            </div>
+          </div>
+        </article>
+      <% }) %>
+    </section>
+  </div>
+</body>
+</html>
